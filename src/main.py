@@ -7,8 +7,8 @@ app = FastAPI()
 
 @app.post("/upload-csv")
 def clean_csv(file: UploadFile = File(...)):
-    df = CsvCleaner(file.file)
-    stream = df.clean()
+    df = CsvCleaner()
+    stream = df.clean(file.file)
     stream.seek(0)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
