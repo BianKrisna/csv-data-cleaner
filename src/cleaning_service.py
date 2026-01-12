@@ -11,4 +11,5 @@ class CsvCleaner:
 
         stream = io.StringIO()
         df.to_csv(stream, index=False)
+        stream.seek(0)
         return stream
