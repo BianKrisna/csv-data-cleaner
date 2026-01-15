@@ -1,0 +1,20 @@
+version: '1.0'
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: csv_cleaner_api
+    ports:
+      - "8000:8000"
+
+
+  frontend:
+    build: ./frontend
+    container_name: csv_cleaner_ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - API_URL=http://backend:8000/upload-csv
